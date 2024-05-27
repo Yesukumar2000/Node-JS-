@@ -1,12 +1,3 @@
-// let title='Kalyi 2898';
-// let actors =["prabas",'amitabh']
-
-// // export {
-// //     title,actors
-// // };
-// export default title;
-
-// ES/Movies.mjs
 
 // Named exports
 export let movieTitle = (name) => {

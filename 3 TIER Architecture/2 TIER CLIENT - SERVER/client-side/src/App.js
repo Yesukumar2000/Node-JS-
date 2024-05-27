@@ -6,30 +6,30 @@ function App() {
   const [favoriteCars, setFavoriteCars] = useState([]);
 
   const fetchCars = async () => {
-    // try {
+    try {
       const response = await fetch('http://localhost:4568/cars');
-      // if (!response.ok) {
-      //   throw new Error('Network response was not ok');
-      // }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       const data = await response.json();
       setCars(data);
-    // }
-    //  catch (error) {
-    //   console.error('Failed to fetch cars:', error);
-    // }
+    }
+     catch (error) {
+      console.error('Failed to fetch cars:', error);
+    }
   };
 
   const fetchFavoriteCars = async () => {
-    // try {
+    try {
       const response = await fetch('http://localhost:4568/favorite-cars');
-      // if (!response.ok) {
-      //   throw new Error('Network response was not ok');
-      // }
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       const data = await response.json();
       setFavoriteCars(data);
-    // } catch (error) {
-    //   console.error('Failed to fetch favorite cars:', error);
-    // }
+    } catch (error) {
+      console.error('Failed to fetch favorite cars:', error);
+    }
   };
 
   return (
