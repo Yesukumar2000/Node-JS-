@@ -120,8 +120,7 @@ let connectToMongoDB = async () => {
       "mongodb+srv://DBUser:DBUser@taskcluster.botpc04.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=taskCluster"
     );
     console.log("Successfully connected to MongoDB");
-    // Uncomment to save products on startup
-    savProductsToDB();
+    // savProductsToDB();
     getDataFromDB();
   } catch (error) {
     console.log("Unable to connect to MongoDB");
