@@ -1,4 +1,4 @@
-//step 1 - imports all 
+//step 1 - imports all
 let mongoose = require("mongoose");
 let express = require("express");
 let cors = require("cors");
@@ -57,7 +57,3 @@ app.get("/employees", async (req, res) => {
   console.log("Employees fetched:"); 
   res.json(employees);
 });
-
-
-
-

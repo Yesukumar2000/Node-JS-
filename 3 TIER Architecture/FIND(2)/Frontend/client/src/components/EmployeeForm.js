@@ -2,47 +2,6 @@ import React, { useState, useEffect } from "react";
 
 function EmployeeForm() {
   let [employees, setEmployees] = useState([]);
-  let [countryiesList, setCountriesList]= useState([]);
-  let [departmentsList, setDepartmentsList]= useState([]);
-  let [gendersList, setGendersList]= useState([]);
-
-
-
- useEffect(()=>{
-  getCountriesListFromServer();
-  getDepartmentsListFromServer();
-  getGendersListFromServer();
-},[])
-
-
-let getCountriesListFromServer = async()=>{
-  let reqOption = {
-    method:'GET'
-  }
-  let JSONData = await fetch("http://localhost:4567/countryiesList",reqOption);
-  let JSOData = await JSONData.json();
-  console.log(JSOData);
-  setCountriesList(JSOData);
-}
-
-let getGendersListFromServer = async()=>{
-  let reqOption = {
-    method:'GET'
-  }
-  let JSONData = await fetch("http://localhost:4567/gendersList",reqOption);
-  let JSOData = await JSONData.json();
-  console.log(JSOData);
-  setGendersList(JSOData);
-}
-let getDepartmentsListFromServer = async()=>{
-  let reqOption = {
-    method:'GET'
-  }
-  let JSONData = await fetch("http://localhost:4567/departmentsList",reqOption);
-  let JSOData = await JSONData.json();
-  console.log(JSOData);
-  setDepartmentsList(JSONData);
-}
 
   let getEmployeesFromServer = async () => {
     try {
@@ -64,32 +23,6 @@ let getDepartmentsListFromServer = async()=>{
   return (
     <div className="employee-form-container">
       <form className="employee-form">
-
-       <div>
-        <label>Country</label>
-        <select>
-          {countryiesList.map((ele)=>{
-            return <option >{ele}</option>
-          })}
-        </select>
-       </div>
-       <div>
-        <label>Department</label>
-        <select>
-          {gendersList.map((ele)=>{
-            return <option>{ele}</option>
-          })}
-        </select>
-       </div>
-       <div>
-        <label>Gender</label>
-        <select>
-          {departmentsList.map((ele)=>{
-            return <option>{ele}</option>
-          })}
-        </select>
-       </div>
-
         <div className="getEmployeeButton">
           <button type="button" onClick={getEmployeesFromServer}>
             Get Employees
