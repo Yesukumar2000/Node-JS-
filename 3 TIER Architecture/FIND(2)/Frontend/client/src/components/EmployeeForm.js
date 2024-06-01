@@ -57,10 +57,10 @@ function EmployeeForm() {
       let reqOptions = {
         method: "GET",
       };
-      
-      // let url= `http://localhost:4567/employees?country=${countrySelelctRef.current.value}&department=${departmentSelelctRef.current.value}&gender=${genderSelelctRef.current.value}`;
 
-      let url = `http://localhost:4567/employees/${countrySelelctRef.current.value}/${departmentSelelctRef.current.value}/${genderSelelctRef.current.value}?order=asc`;
+      let url= `http://localhost:4567/employees?country=${countrySelelctRef.current.value}&department=${departmentSelelctRef.current.value}&gender=${genderSelelctRef.current.value}`;
+
+      // let url = `http://localhost:4567/employees/${countrySelelctRef.current.value}/${departmentSelelctRef.current.value}/${genderSelelctRef.current.value}?order=asc`;
 
       console.log(url);
 
@@ -74,6 +74,7 @@ function EmployeeForm() {
 
   return (
     <div className="employee-form-container">
+      <h1>Employee Form</h1>
       <form className="employee-form">
         <div>
           <label>Country</label>
