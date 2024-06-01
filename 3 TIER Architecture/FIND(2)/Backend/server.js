@@ -1,4 +1,4 @@
-//step 1 - imports all
+//step 1 - imports 
 let mongoose = require("mongoose");
 let express = require("express");
 let cors = require("cors");
@@ -44,16 +44,30 @@ let employeeschema = new mongoose.Schema({
 let Employee = new mongoose.model("employee", employeeschema);
 
 //step 7 -get the data
-app.get("/employees", async (req, res) => {
-  let employees = await Employee.find()
-  .and([{ country: 'Russia' }, { gender: 'Male' }])
-  // .or([{ country: 'Indonesia' } , { gender: 'Female' }]) // Using or condition
-  .select(['id', 'profilepic', 'firstName', 'email', 'gender', 'age', 'department', 'country', 'salary']) // Selecting specific fields
-  .sort({ age: 1, salary: -1}) // Sorting by age ascending and salary descending
-  .limit(100) // Limiting results upto 100
-  .skip(10); // Skipping the first 10 results
-  // .distinct("department") // result in console
-  // .count() // result in console
+app.get("/employees/:countryName/:departmentName/:genderName", async (req, res) => {
+  console.log(req.params);
+  
+  let employees = await Employee.find().and([{country:req.params.countryName},{department:req.params.departmentName},{gender:req.params.genderName}]).sort(req.query.order == "asc"?"age":"-age");
+
   console.log("Employees fetched:"); 
   res.json(employees);
+
 });
+
+
+
+
+app.get('/countriesList',async(req,res)=>{
+ let CountriesList = await Employee.find().distinct('country');
+   res.json(CountriesList);
+})
+app.get('/gendersList',async(req,res)=>{
+  let GendersList = await Employee.find().distinct('gender');
+    res.json(GendersList);
+ })
+ app.get('/departmentsList',async(req,res)=>{
+  let DepartmentsList = await Employee.find().distinct('department');
+    res.json(DepartmentsList);
+ })
+
+

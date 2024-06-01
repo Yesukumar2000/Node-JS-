@@ -1,82 +1,131 @@
-.employee-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  margin: 0 auto;
-  max-width: 800px;
-  
+body {
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
 }
 
-.heading {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
+.employee-form-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+ 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .employee-form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  justify-content: space-between;
   margin-bottom: 20px;
-  
 }
 
-.getEmployeeButton {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
+.employee-form div {
+  flex: 1 1 30%;
+  min-width: 280px;
+  margin: 10px 0;
+}
+
+.employee-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #495057;
+}
+
+.employee-form select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ced4da;
   border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.employee-form select:focus {
+  border-color: #17a2b8;
+  box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+  outline: none;
+}
+
+.getEmployeesButton {
+  flex: 1 1 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.getEmployeesButton button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.getEmployeesButton button:hover {
+  background-color: #218838; 
+  transform: scale(1.05);
+}
+
+.employee-table-container {
+  overflow-x: auto;
 }
 
 .employee-table {
-  border-collapse: collapse;
   width: 100%;
-  border: 2px solid black; 
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-.employee-table th,
-.employee-table td {
+.employee-table th, .employee-table td {
+  border: 2px solid #dee2e6;
+  padding: 12px;
   text-align: left;
-  padding: 8px;
-}
-
-.employee-table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .employee-table th {
-  background-color: #4caf50;
+  background-color: #28a745; 
   color: white;
-  padding: 12px;
+  font-weight: bold;
 }
 
-.employee-row {
-  cursor: pointer;
+.employee-table tr:nth-child(even) {
+  background-color: #f8f9fa;
 }
 
-.employee-row:hover {
-  background-color: #ddd;
+.employee-table tr:hover {
+  background-color: #b8d2e0; 
+  color: black;
 }
 
-form{
- display: inline-block;
- padding: 25px;
- background-color: rgb(70, 224, 70);
+.employee-row img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-form label{
-  display: inline-block;
-  width: 100px;
-}
-form div{
-  margin: 15px;
-}
-form select{
-  width: 100px;
+
+@media (max-width: 768px) {
+  .employee-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .employee-form div {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .employee-table th, .employee-table td {
+    padding: 8px;
+  }
+
+  .getEmployeesButton button {
+    width: 100%;
+  }
 }
