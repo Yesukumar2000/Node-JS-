@@ -22,7 +22,7 @@ let connectToMongoDB = async () => {
 
 // Step 5: Define User schema
 let userSchema = new mongoose.Schema({
-  firstName: String, // Corrected typo
+  firstName: String,
   lastName: String,
   age: Number,
   email: String,
@@ -49,6 +49,7 @@ app.post("/register", async (req, res) => {
     });
 
     await newUser.save(); // Save the user
+
     console.log("User saved successfully");
     res.json({ status: "Success", msg: "User created successfully" });
   } catch (error) {
@@ -58,9 +59,9 @@ app.post("/register", async (req, res) => {
 });
 
 
-// Step 8: Start the server (usually placed at the end)
-connectToMongoDB().then(() => { // Call connectToMongoDB after configuration
-  app.listen(7999, () => {
-    console.log("Listening on port 7999");
-  });
+// Step 8: call the function
+connectToMongoDB();
+// step 9 - port
+app.listen(7999, () => {
+  console.log("Listening the port number is 7999");
 });
